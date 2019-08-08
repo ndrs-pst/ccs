@@ -3048,13 +3048,20 @@ SFR_8BIT(PM5CTL0_H);                          /* PMM Power Mode 5 Control Regist
 * DIGITAL I/O Port1/2 Pull up / Pull down Resistors
 ************************************************************/
 #define __MSP430_HAS_PORT1_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT1_R__ 0x0200
+#if defined(_MSC_VER) /* ES1906-02 */
+#define __MSP430_BASEADDRESS_PORT1_R__      ((msp_addr_t)&ut_port12a_reg[0])
+#define __MSP430_BASEADDRESS_PORT2_R__      ((msp_addr_t)&ut_port12a_reg[0])
+#define __MSP430_BASEADDRESS_PORTA_R__      ((msp_addr_t)&ut_port12a_reg[0])
+#else
+#define __MSP430_BASEADDRESS_PORT1_R__      0x0200
+#define __MSP430_BASEADDRESS_PORT2_R__      0x0200
+#define __MSP430_BASEADDRESS_PORTA_R__      0x0200
+#endif
+
 #define P1_BASE                __MSP430_BASEADDRESS_PORT1_R__
 #define __MSP430_HAS_PORT2_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT2_R__ 0x0200
 #define P2_BASE                __MSP430_BASEADDRESS_PORT2_R__
 #define __MSP430_HAS_PORTA_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORTA_R__ 0x0200
 #define PA_BASE                __MSP430_BASEADDRESS_PORTA_R__
 #define __MSP430_HAS_P1SEL0__                 /* Define for DriverLib */
 #define __MSP430_HAS_P2SEL0__                 /* Define for DriverLib */
@@ -3146,13 +3153,20 @@ SFR_16BIT(P2IV);                              /* Port 2 Interrupt Vector Word */
 * DIGITAL I/O Port3/4 Pull up / Pull down Resistors
 ************************************************************/
 #define __MSP430_HAS_PORT3_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT3_R__ 0x0220
+#if defined(_MSC_VER) /* ES1906-02 */
+#define __MSP430_BASEADDRESS_PORT3_R__      ((msp_addr_t)&ut_port34b_reg[0])
+#define __MSP430_BASEADDRESS_PORT4_R__      ((msp_addr_t)&ut_port34b_reg[0])
+#define __MSP430_BASEADDRESS_PORTB_R__      ((msp_addr_t)&ut_port34b_reg[0])
+#else
+#define __MSP430_BASEADDRESS_PORT3_R__      0x0220
+#define __MSP430_BASEADDRESS_PORT4_R__      0x0220
+#define __MSP430_BASEADDRESS_PORTB_R__      0x0220
+#endif
+
 #define P3_BASE                __MSP430_BASEADDRESS_PORT3_R__
 #define __MSP430_HAS_PORT4_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT4_R__ 0x0220
 #define P4_BASE                __MSP430_BASEADDRESS_PORT4_R__
 #define __MSP430_HAS_PORTB_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORTB_R__ 0x0220
 #define PB_BASE                __MSP430_BASEADDRESS_PORTB_R__
 #define __MSP430_HAS_P3SEL0__                 /* Define for DriverLib */
 #define __MSP430_HAS_P4SEL0__                 /* Define for DriverLib */
@@ -3244,13 +3258,20 @@ SFR_16BIT(P4IV);                              /* Port 4 Interrupt Vector Word */
 * DIGITAL I/O Port5/6 Pull up / Pull down Resistors
 ************************************************************/
 #define __MSP430_HAS_PORT5_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT5_R__ 0x0240
+#if defined(_MSC_VER) /* ES1906-02 */
+#define __MSP430_BASEADDRESS_PORT5_R__      ((msp_addr_t)&ut_port56c_reg[0])
+#define __MSP430_BASEADDRESS_PORT6_R__      ((msp_addr_t)&ut_port56c_reg[0])
+#define __MSP430_BASEADDRESS_PORTC_R__      ((msp_addr_t)&ut_port56c_reg[0])
+#else
+#define __MSP430_BASEADDRESS_PORT5_R__      0x0240
+#define __MSP430_BASEADDRESS_PORT6_R__      0x0240
+#define __MSP430_BASEADDRESS_PORTC_R__      0x0240
+#endif
+
 #define P5_BASE                __MSP430_BASEADDRESS_PORT5_R__
 #define __MSP430_HAS_PORT6_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT6_R__ 0x0240
 #define P6_BASE                __MSP430_BASEADDRESS_PORT6_R__
 #define __MSP430_HAS_PORTC_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORTC_R__ 0x0240
 #define PC_BASE                __MSP430_BASEADDRESS_PORTC_R__
 #define __MSP430_HAS_P5SEL0__                 /* Define for DriverLib */
 #define __MSP430_HAS_P6SEL0__                 /* Define for DriverLib */
@@ -3303,13 +3324,20 @@ SFR_8BIT(PCSELC_H);                           /* Port C Complement Selection */
 * DIGITAL I/O Port7/8 Pull up / Pull down Resistors
 ************************************************************/
 #define __MSP430_HAS_PORT7_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT7_R__ 0x0260
+#if defined(_MSC_VER) /* ES1906-02 */
+#define __MSP430_BASEADDRESS_PORT7_R__      ((msp_addr_t)&ut_port78d_reg[0])
+#define __MSP430_BASEADDRESS_PORT8_R__      ((msp_addr_t)&ut_port78d_reg[0])
+#define __MSP430_BASEADDRESS_PORTD_R__      ((msp_addr_t)&ut_port78d_reg[0])
+#else
+#define __MSP430_BASEADDRESS_PORT7_R__      0x0260
+#define __MSP430_BASEADDRESS_PORT8_R__      0x0260
+#define __MSP430_BASEADDRESS_PORTD_R__      0x0260
+#endif
+
 #define P7_BASE                __MSP430_BASEADDRESS_PORT7_R__
 #define __MSP430_HAS_PORT8_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT8_R__ 0x0260
 #define P8_BASE                __MSP430_BASEADDRESS_PORT8_R__
 #define __MSP430_HAS_PORTD_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORTD_R__ 0x0260
 #define PD_BASE                __MSP430_BASEADDRESS_PORTD_R__
 #define __MSP430_HAS_P7SEL0__                 /* Define for DriverLib */
 #define __MSP430_HAS_P8SEL0__                 /* Define for DriverLib */
@@ -3362,13 +3390,20 @@ SFR_8BIT(PDSELC_H);                           /* Port D Complement Selection */
 * DIGITAL I/O Port9/10 Pull up / Pull down Resistors
 ************************************************************/
 #define __MSP430_HAS_PORT9_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT9_R__ 0x0280
+#if defined(_MSC_VER) /* ES1906-02 */
+#define __MSP430_BASEADDRESS_PORT9_R__      ((msp_addr_t)&ut_port910e_reg[0])
+#define __MSP430_BASEADDRESS_PORT10_R__     ((msp_addr_t)&ut_port910e_reg[0])
+#define __MSP430_BASEADDRESS_PORTE_R__      ((msp_addr_t)&ut_port910e_reg[0])
+#else
+#define __MSP430_BASEADDRESS_PORT9_R__      0x0280
+#define __MSP430_BASEADDRESS_PORT10_R__     0x0280
+#define __MSP430_BASEADDRESS_PORTE_R__      0x0280
+#endif
+
 #define P9_BASE                __MSP430_BASEADDRESS_PORT9_R__
 #define __MSP430_HAS_PORT10_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT10_R__ 0x0280
 #define P10_BASE               __MSP430_BASEADDRESS_PORT10_R__
 #define __MSP430_HAS_PORTE_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORTE_R__ 0x0280
 #define PE_BASE                __MSP430_BASEADDRESS_PORTE_R__
 #define __MSP430_HAS_P9SEL0__                 /* Define for DriverLib */
 #define __MSP430_HAS_P10SEL0__                /* Define for DriverLib */
