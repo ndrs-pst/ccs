@@ -5550,7 +5550,12 @@ typedef void (* __SFR_FARPTR)();
 #define OUTMOD0                (0x0020)       /* Output mode 0 */
 #define CCIE                   (0x0010)       /* Capture/compare interrupt enable */
 #define CCI                    (0x0008)       /* Capture input signal (read) */
+#if defined(_MSC_VER)
+#define TAXCCTLX_OUT           (0x0004)       /* PWM Output signal if output mode 0 */
+#else
 #define OUT                    (0x0004)       /* PWM Output signal if output mode 0 */
+#define TAXCCTLX_OUT           (0x0004)       /* PWM Output signal if output mode 0 */
+#endif
 #define COV                    (0x0002)       /* Capture/compare overflow flag */
 #define CCIFG                  (0x0001)       /* Capture/compare interrupt flag */
 
@@ -5738,7 +5743,12 @@ typedef void (* __SFR_FARPTR)();
 #define CM_1                   (1*0x4000u)    /* Capture mode: 1 - pos. edge */
 #define CM_2                   (2*0x4000u)    /* Capture mode: 1 - neg. edge */
 #define CM_3                   (3*0x4000u)    /* Capture mode: 1 - both edges */
+#if defined(_MSC_VER)
+#define TBXCCTLX_OUT           (0x0004)       /* PWM Output signal if output mode 0 */
+#else
 #define OUT                    (0x0004)       /* PWM Output signal if output mode 0 */
+#define TBXCCTLX_OUT           (0x0004)       /* PWM Output signal if output mode 0 */
+#endif
 #define OUTMOD_0               (0*0x20u)      /* PWM output mode: 0 - output only */
 #define OUTMOD_1               (1*0x20u)      /* PWM output mode: 1 - set */
 #define OUTMOD_2               (2*0x20u)      /* PWM output mode: 2 - PWM toggle/reset */

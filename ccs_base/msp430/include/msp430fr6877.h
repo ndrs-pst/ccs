@@ -4222,7 +4222,12 @@ SFR_16BIT(TA0EX0);                            /* Timer0_A3 Expansion Register 0 
 #define OUTMOD0                (0x0020)       /* Output mode 0 */
 #define CCIE                   (0x0010)       /* Capture/compare interrupt enable */
 #define CCI                    (0x0008)       /* Capture input signal (read) */
+#if defined(_MSC_VER)
+#define TAXCCTLX_OUT           (0x0004)       /* PWM Output signal if output mode 0 */
+#else
 #define OUT                    (0x0004)       /* PWM Output signal if output mode 0 */
+#define TAXCCTLX_OUT           (0x0004)       /* PWM Output signal if output mode 0 */
+#endif
 #define COV                    (0x0002)       /* Capture/compare overflow flag */
 #define CCIFG                  (0x0001)       /* Capture/compare interrupt flag */
 
