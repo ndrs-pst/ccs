@@ -2177,8 +2177,12 @@ SFR_8BIT(GCCTL1_H);                           /* General Control 1 */
 * LCD_C
 ************************************************************/
 #define __MSP430_HAS_LCD_C__                  /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define LCD_C_BASE              ((msp_addr_t)&ut_lcd_c_reg[0])
+#else
 #define __MSP430_BASEADDRESS_LCD_C__ 0x0A00
-#define LCD_C_BASE             __MSP430_BASEADDRESS_LCD_C__
+#define LCD_C_BASE              __MSP430_BASEADDRESS_LCD_C__
+#endif
 
 SFR_16BIT(LCDCCTL0);                          /* LCD_C Control Register 0 */
 SFR_8BIT(LCDCCTL0_L);                         /* LCD_C Control Register 0 */

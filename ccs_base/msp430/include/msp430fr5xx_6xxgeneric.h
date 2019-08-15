@@ -3976,7 +3976,7 @@ typedef void (* __SFR_FARPTR)();
 #define OFS_P2IV               (0x001E)       /* Port 2 Interrupt Vector Word */
 #define OFS_P2IES              (0x0019)
 #define OFS_P2IE               (0x001B)
-#define OFS_P2IFG              (0x001d)
+#define OFS_P2IFG              (0x001D)
 #define P1IN                   (PAIN_L)       /* Port 1 Input */
 #define P1OUT                  (PAOUT_L)      /* Port 1 Output */
 #define P1DIR                  (PADIR_L)      /* Port 1 Direction */
@@ -4085,7 +4085,7 @@ typedef void (* __SFR_FARPTR)();
 #define OFS_P4IV               (0x001E)       /* Port 4 Interrupt Vector Word */
 #define OFS_P4IES              (0x0019)
 #define OFS_P4IE               (0x001B)
-#define OFS_P4IFG              (0x001d)
+#define OFS_P4IFG              (0x001D)
 #define P3IN                   (PBIN_L)       /* Port 3 Input */
 #define P3OUT                  (PBOUT_L)      /* Port 3 Output */
 #define P3DIR                  (PBDIR_L)      /* Port 3 Direction */
@@ -4194,7 +4194,7 @@ typedef void (* __SFR_FARPTR)();
 #define OFS_P6IV               (0x001E)       /* Port 6 Interrupt Vector Word */
 #define OFS_P6IES              (0x0019)
 #define OFS_P6IE               (0x001B)
-#define OFS_P6IFG              (0x001d)
+#define OFS_P6IFG              (0x001D)
 #define P5IN                   (PCIN_L)       /* Port 5 Input */
 #define P5OUT                  (PCOUT_L)      /* Port 5 Output */
 #define P5DIR                  (PCDIR_L)      /* Port 5 Direction */
@@ -4303,7 +4303,7 @@ typedef void (* __SFR_FARPTR)();
 #define OFS_P8IV               (0x001E)       /* Port 8 Interrupt Vector Word */
 #define OFS_P8IES              (0x0019)
 #define OFS_P8IE               (0x001B)
-#define OFS_P8IFG              (0x001d)
+#define OFS_P8IFG              (0x001D)
 #define P7IN                   (PDIN_L)       /* Port 7 Input */
 #define P7OUT                  (PDOUT_L)      /* Port 7 Output */
 #define P7DIR                  (PDDIR_L)      /* Port 7 Direction */
@@ -4412,7 +4412,7 @@ typedef void (* __SFR_FARPTR)();
 #define OFS_P10IV              (0x001E)       /* Port 10 Interrupt Vector Word */
 #define OFS_P10IES             (0x0019)
 #define OFS_P10IE              (0x001B)
-#define OFS_P10IFG             (0x001d)
+#define OFS_P10IFG             (0x001D)
 #define P9IN                   (PEIN_L)       /* Port 9 Input */
 #define P9OUT                  (PEOUT_L)      /* Port 9 Output */
 #define P9DIR                  (PEDIR_L)      /* Port 9 Direction */
