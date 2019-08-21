@@ -98,11 +98,11 @@ typedef void (* __SFR_FARPTR)();
 /************************************************************
 * STATUS REGISTER BITS
 ************************************************************/
-
-#define C                      (0x0001)
-#define Z                      (0x0002)
-#define N                      (0x0004)
-#define V                      (0x0100)
+/* ES1906-02 : add SR_ prefix to C, Z, N and V for CPP_UTEST compatibility */
+#define SR_C                   (0x0001)
+#define SR_Z                   (0x0002)
+#define SR_N                   (0x0004)
+#define SR_V                   (0x0100)
 #define GIE                    (0x0008)
 #define CPUOFF                 (0x0010)
 #define OSCOFF                 (0x0020)
