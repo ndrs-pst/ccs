@@ -3598,8 +3598,12 @@ SFR_8BIT(REFCTL0_H);                          /* REF Shared Reference control re
 * Real Time Clock
 ************************************************************/
 #define __MSP430_HAS_RTC_C__                  /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define RTC_C_BASE              ((msp_addr_t)&ut_rtc_c_reg[0])
+#else
 #define __MSP430_BASEADDRESS_RTC_C__ 0x04A0
-#define RTC_C_BASE             __MSP430_BASEADDRESS_RTC_C__
+#define RTC_C_BASE              __MSP430_BASEADDRESS_RTC_C__
+#endif
 
 SFR_16BIT(RTCCTL0);                           /* Real Timer Clock Control 0/Key */
 SFR_8BIT(RTCCTL0_L);                          /* Real Timer Clock Control 0/Key */
@@ -4285,8 +4289,12 @@ SFR_16BIT(TA0EX0);                            /* Timer0_A3 Expansion Register 0 
 * Timer1_A3
 ************************************************************/
 #define __MSP430_HAS_T1A3__                   /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define TIMER_A1_BASE           ((msp_addr_t)&ut_tmr_a1_reg[0])
+#else
 #define __MSP430_BASEADDRESS_T1A3__ 0x0380
-#define TIMER_A1_BASE          __MSP430_BASEADDRESS_T1A3__
+#define TIMER_A1_BASE           __MSP430_BASEADDRESS_T1A3__
+#endif
 
 SFR_16BIT(TA1CTL);                            /* Timer1_A3 Control */
 SFR_16BIT(TA1CCTL0);                          /* Timer1_A3 Capture/Compare Control 0 */
@@ -4320,8 +4328,12 @@ SFR_16BIT(TA1EX0);                            /* Timer1_A3 Expansion Register 0 
 * Timer2_A2
 ************************************************************/
 #define __MSP430_HAS_T2A2__                   /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define TIMER_A2_BASE           ((msp_addr_t)&ut_tmr_a2_reg[0])
+#else
 #define __MSP430_BASEADDRESS_T2A2__ 0x0400
-#define TIMER_A2_BASE          __MSP430_BASEADDRESS_T2A2__
+#define TIMER_A2_BASE           __MSP430_BASEADDRESS_T2A2__
+#endif
 
 SFR_16BIT(TA2CTL);                            /* Timer2_A2 Control */
 SFR_16BIT(TA2CCTL0);                          /* Timer2_A2 Capture/Compare Control 0 */
@@ -4351,8 +4363,12 @@ SFR_16BIT(TA2EX0);                            /* Timer2_A2 Expansion Register 0 
 * Timer3_A5
 ************************************************************/
 #define __MSP430_HAS_T3A5__                   /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define TIMER_A3_BASE           ((msp_addr_t)&ut_tmr_a3_reg[0])
+#else
 #define __MSP430_BASEADDRESS_T3A5__ 0x0440
-#define TIMER_A3_BASE          __MSP430_BASEADDRESS_T3A5__
+#define TIMER_A3_BASE           __MSP430_BASEADDRESS_T3A5__
+#endif
 
 SFR_16BIT(TA3CTL);                            /* Timer3_A5 Control */
 SFR_16BIT(TA3CCTL0);                          /* Timer3_A5 Capture/Compare Control 0 */
