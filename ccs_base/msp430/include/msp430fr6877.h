@@ -4539,7 +4539,7 @@ SFR_16BIT(TB0IV);                             /* Timer0_B7 Interrupt Vector Word
 ************************************************************/
 #define __MSP430_HAS_EUSCI_A0__                /* Definition to show that Module is available */
 #if defined(_MSC_VER) /* ES1906-02 */
-#define EUSCI_A0_BASE           ((msp_addr_t)&ut_eusci_a0_reg[0])
+#define EUSCI_A0_BASE           ((msp_addr_t)&ut_eusci_a_reg[0][0])
 #else
 #define __MSP430_BASEADDRESS_EUSCI_A0__ 0x05C0
 #define EUSCI_A0_BASE           __MSP430_BASEADDRESS_EUSCI_A0__
@@ -4588,7 +4588,7 @@ SFR_16BIT(UCA0IV);                            /* USCI A0 Interrupt Vector Regist
 ************************************************************/
 #define __MSP430_HAS_EUSCI_A1__                /* Definition to show that Module is available */
 #if defined(_MSC_VER) /* ES1906-02 */
-#define EUSCI_A1_BASE           ((msp_addr_t)&ut_eusci_a1_reg[0])
+#define EUSCI_A1_BASE           ((msp_addr_t)&ut_eusci_a_reg[0][0])
 #else
 #define __MSP430_BASEADDRESS_EUSCI_A1__ 0x05E0
 #define EUSCI_A1_BASE           __MSP430_BASEADDRESS_EUSCI_A1__
@@ -4637,7 +4637,7 @@ SFR_16BIT(UCA1IV);                            /* USCI A1 Interrupt Vector Regist
 ************************************************************/
 #define __MSP430_HAS_EUSCI_B0__                /* Definition to show that Module is available */
 #if defined(_MSC_VER) /* ES1906-02 */
-#define EUSCI_B0_BASE           ((msp_addr_t)&ut_eusci_b0_reg[0])
+#define EUSCI_B0_BASE           ((msp_addr_t)&ut_eusci_b_reg[0][0])
 #else
 #define __MSP430_BASEADDRESS_EUSCI_B0__ 0x0640
 #define EUSCI_B0_BASE          __MSP430_BASEADDRESS_EUSCI_B0__
@@ -4704,7 +4704,7 @@ SFR_16BIT(UCB0IV);                            /* USCI B0 Interrupt Vector Regist
 ************************************************************/
 #define __MSP430_HAS_EUSCI_B1__                /* Definition to show that Module is available */
 #if defined(_MSC_VER) /* ES1906-02 */
-#define EUSCI_B1_BASE           ((msp_addr_t)&ut_eusci_b1_reg[0])
+#define EUSCI_B1_BASE           ((msp_addr_t)&ut_eusci_b_reg[1][0])
 #else
 #define __MSP430_BASEADDRESS_EUSCI_B1__ 0x0680
 #define EUSCI_B1_BASE          __MSP430_BASEADDRESS_EUSCI_B1__
