@@ -99,11 +99,11 @@ typedef void (* __SFR_FARPTR)();
 /************************************************************
 * STATUS REGISTER BITS
 ************************************************************/
-
-#define C                      (0x0001)
-#define Z                      (0x0002)
-#define N                      (0x0004)
-#define V                      (0x0100)
+/* ES1906-02 : add SR_ prefix to C, Z, N and V for CPP_UTEST compatibility */
+#define SR_C                   (0x0001)
+#define SR_Z                   (0x0002)
+#define SR_N                   (0x0004)
+#define SR_V                   (0x0100)
 #define GIE                    (0x0008)
 #define CPUOFF                 (0x0010)
 #define OSCOFF                 (0x0020)
@@ -128,7 +128,11 @@ typedef void (* __SFR_FARPTR)();
 #define LPM4_bits              (SCG1+SCG0+OSCOFF+CPUOFF)
 
 #include "in430.h"
+#if defined(_MSC_VER) /* ES1906-02 */
+// pass
+#else
 #include <intrinsics.h>
+#endif
 
 #define LPM0      __bis_SR_register(LPM0_bits)         /* Enter Low Power Mode 0 */
 #define LPM0_EXIT __bic_SR_register_on_exit(LPM0_bits) /* Exit Low Power Mode 0 */
@@ -150,8 +154,12 @@ typedef void (* __SFR_FARPTR)();
 * ADC12_B
 ************************************************************/
 #define __MSP430_HAS_ADC12_B__                /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define ADC12_B_BASE            ((msp_addr_t)&ut_adc12_b_reg[0])
+#else
 #define __MSP430_BASEADDRESS_ADC12_B__ 0x0800
-#define ADC12_B_BASE           __MSP430_BASEADDRESS_ADC12_B__
+#define ADC12_B_BASE            __MSP430_BASEADDRESS_ADC12_B__
+#endif
 
 SFR_16BIT(ADC12CTL0);                         /* ADC12 B Control 0 */
 SFR_8BIT(ADC12CTL0_L);                        /* ADC12 B Control 0 */
@@ -1596,8 +1604,12 @@ SFR_8BIT(CRC16RESRW1_H);                      /* CRC16 Result Reverse */
 * CLOCK SYSTEM
 ************************************************************/
 #define __MSP430_HAS_CS__                     /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define CS_BASE                 ((msp_addr_t)&ut_cs_reg[0])
+#else
 #define __MSP430_BASEADDRESS_CS__ 0x0160
-#define CS_BASE                __MSP430_BASEADDRESS_CS__
+#define CS_BASE                 __MSP430_BASEADDRESS_CS__
+#endif
 
 SFR_16BIT(CSCTL0);                            /* CS Control Register 0 */
 SFR_8BIT(CSCTL0_L);                           /* CS Control Register 0 */
@@ -2225,8 +2237,12 @@ SFR_16BIT(DMA2SZ);                            /* DMA Channel 2 Transfer Size */
 * EXTENDED SCAN INTERFACE
 ************************************************************/
 #define __MSP430_HAS_ESI__                    /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define ESI_BASE                ((msp_addr_t)&ut_esi_reg[0])
+#else
 #define __MSP430_BASEADDRESS_ESI__ 0x0D00
-#define ESI_BASE               __MSP430_BASEADDRESS_ESI__
+#define ESI_BASE                __MSP430_BASEADDRESS_ESI__
+#endif
 
 SFR_16BIT(ESIDEBUG1);                         /* ESI debug register 1 */
 SFR_8BIT(ESIDEBUG1_L);                        /* ESI debug register 1 */
@@ -3095,8 +3111,12 @@ SFR_8BIT(GCCTL1_H);                           /* General Control 1 */
 * LCD_C
 ************************************************************/
 #define __MSP430_HAS_LCD_C__                  /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define LCD_C_BASE              ((msp_addr_t)&ut_lcd_c_reg[0])
+#else
 #define __MSP430_BASEADDRESS_LCD_C__ 0x0A00
-#define LCD_C_BASE             __MSP430_BASEADDRESS_LCD_C__
+#define LCD_C_BASE              __MSP430_BASEADDRESS_LCD_C__
+#endif
 
 SFR_16BIT(LCDCCTL0);                          /* LCD_C Control Register 0 */
 SFR_8BIT(LCDCCTL0_L);                         /* LCD_C Control Register 0 */
@@ -3966,13 +3986,20 @@ SFR_8BIT(PM5CTL0_H);                          /* PMM Power Mode 5 Control Regist
 * DIGITAL I/O Port1/2 Pull up / Pull down Resistors
 ************************************************************/
 #define __MSP430_HAS_PORT1_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT1_R__ 0x0200
+#if defined(_MSC_VER) /* ES1906-02 */
+#define __MSP430_BASEADDRESS_PORT1_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTA])
+#define __MSP430_BASEADDRESS_PORT2_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTA])
+#define __MSP430_BASEADDRESS_PORTA_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTA])
+#else
+#define __MSP430_BASEADDRESS_PORT1_R__      0x0200
+#define __MSP430_BASEADDRESS_PORT2_R__      0x0200
+#define __MSP430_BASEADDRESS_PORTA_R__      0x0200
+#endif
+
 #define P1_BASE                __MSP430_BASEADDRESS_PORT1_R__
 #define __MSP430_HAS_PORT2_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT2_R__ 0x0200
 #define P2_BASE                __MSP430_BASEADDRESS_PORT2_R__
 #define __MSP430_HAS_PORTA_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORTA_R__ 0x0200
 #define PA_BASE                __MSP430_BASEADDRESS_PORTA_R__
 #define __MSP430_HAS_P1SEL0__                 /* Define for DriverLib */
 #define __MSP430_HAS_P2SEL0__                 /* Define for DriverLib */
@@ -4064,13 +4091,20 @@ SFR_16BIT(P2IV);                              /* Port 2 Interrupt Vector Word */
 * DIGITAL I/O Port3/4 Pull up / Pull down Resistors
 ************************************************************/
 #define __MSP430_HAS_PORT3_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT3_R__ 0x0220
+#if defined(_MSC_VER) /* ES1906-02 */
+#define __MSP430_BASEADDRESS_PORT3_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTB])
+#define __MSP430_BASEADDRESS_PORT4_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTB])
+#define __MSP430_BASEADDRESS_PORTB_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTB])
+#else
+#define __MSP430_BASEADDRESS_PORT3_R__      0x0220
+#define __MSP430_BASEADDRESS_PORT4_R__      0x0220
+#define __MSP430_BASEADDRESS_PORTB_R__      0x0220
+#endif
+
 #define P3_BASE                __MSP430_BASEADDRESS_PORT3_R__
 #define __MSP430_HAS_PORT4_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT4_R__ 0x0220
 #define P4_BASE                __MSP430_BASEADDRESS_PORT4_R__
 #define __MSP430_HAS_PORTB_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORTB_R__ 0x0220
 #define PB_BASE                __MSP430_BASEADDRESS_PORTB_R__
 #define __MSP430_HAS_P3SEL0__                 /* Define for DriverLib */
 #define __MSP430_HAS_P4SEL0__                 /* Define for DriverLib */
@@ -4162,13 +4196,20 @@ SFR_16BIT(P4IV);                              /* Port 4 Interrupt Vector Word */
 * DIGITAL I/O Port5/6 Pull up / Pull down Resistors
 ************************************************************/
 #define __MSP430_HAS_PORT5_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT5_R__ 0x0240
+#if defined(_MSC_VER) /* ES1906-02 */
+#define __MSP430_BASEADDRESS_PORT5_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTC])
+#define __MSP430_BASEADDRESS_PORT6_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTC])
+#define __MSP430_BASEADDRESS_PORTC_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTC])
+#else
+#define __MSP430_BASEADDRESS_PORT5_R__      0x0240
+#define __MSP430_BASEADDRESS_PORT6_R__      0x0240
+#define __MSP430_BASEADDRESS_PORTC_R__      0x0240
+#endif
+
 #define P5_BASE                __MSP430_BASEADDRESS_PORT5_R__
 #define __MSP430_HAS_PORT6_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT6_R__ 0x0240
 #define P6_BASE                __MSP430_BASEADDRESS_PORT6_R__
 #define __MSP430_HAS_PORTC_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORTC_R__ 0x0240
 #define PC_BASE                __MSP430_BASEADDRESS_PORTC_R__
 #define __MSP430_HAS_P5SEL0__                 /* Define for DriverLib */
 #define __MSP430_HAS_P6SEL0__                 /* Define for DriverLib */
@@ -4221,13 +4262,20 @@ SFR_8BIT(PCSELC_H);                           /* Port C Complement Selection */
 * DIGITAL I/O Port7/8 Pull up / Pull down Resistors
 ************************************************************/
 #define __MSP430_HAS_PORT7_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT7_R__ 0x0260
+#if defined(_MSC_VER) /* ES1906-02 */
+#define __MSP430_BASEADDRESS_PORT7_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTD])
+#define __MSP430_BASEADDRESS_PORT8_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTD])
+#define __MSP430_BASEADDRESS_PORTD_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTD])
+#else
+#define __MSP430_BASEADDRESS_PORT7_R__      0x0260
+#define __MSP430_BASEADDRESS_PORT8_R__      0x0260
+#define __MSP430_BASEADDRESS_PORTD_R__      0x0260
+#endif
+
 #define P7_BASE                __MSP430_BASEADDRESS_PORT7_R__
 #define __MSP430_HAS_PORT8_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT8_R__ 0x0260
 #define P8_BASE                __MSP430_BASEADDRESS_PORT8_R__
 #define __MSP430_HAS_PORTD_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORTD_R__ 0x0260
 #define PD_BASE                __MSP430_BASEADDRESS_PORTD_R__
 #define __MSP430_HAS_P7SEL0__                 /* Define for DriverLib */
 #define __MSP430_HAS_P8SEL0__                 /* Define for DriverLib */
@@ -4280,13 +4328,20 @@ SFR_8BIT(PDSELC_H);                           /* Port D Complement Selection */
 * DIGITAL I/O Port9/10 Pull up / Pull down Resistors
 ************************************************************/
 #define __MSP430_HAS_PORT9_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT9_R__ 0x0280
+#if defined(_MSC_VER) /* ES1906-02 */
+#define __MSP430_BASEADDRESS_PORT9_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTE])
+#define __MSP430_BASEADDRESS_PORT10_R__     ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTE])
+#define __MSP430_BASEADDRESS_PORTE_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTE])
+#else
+#define __MSP430_BASEADDRESS_PORT9_R__      0x0280
+#define __MSP430_BASEADDRESS_PORT10_R__     0x0280
+#define __MSP430_BASEADDRESS_PORTE_R__      0x0280
+#endif
+
 #define P9_BASE                __MSP430_BASEADDRESS_PORT9_R__
 #define __MSP430_HAS_PORT10_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORT10_R__ 0x0280
 #define P10_BASE               __MSP430_BASEADDRESS_PORT10_R__
 #define __MSP430_HAS_PORTE_R__                /* Definition to show that Module is available */
-#define __MSP430_BASEADDRESS_PORTE_R__ 0x0280
 #define PE_BASE                __MSP430_BASEADDRESS_PORTE_R__
 #define __MSP430_HAS_P9SEL0__                 /* Define for DriverLib */
 #define __MSP430_HAS_P10SEL0__                /* Define for DriverLib */
@@ -4477,8 +4532,12 @@ SFR_8BIT(REFCTL0_H);                          /* REF Shared Reference control re
 * Real Time Clock
 ************************************************************/
 #define __MSP430_HAS_RTC_C__                  /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define RTC_C_BASE              ((msp_addr_t)&ut_rtc_c_reg[0])
+#else
 #define __MSP430_BASEADDRESS_RTC_C__ 0x04A0
-#define RTC_C_BASE             __MSP430_BASEADDRESS_RTC_C__
+#define RTC_C_BASE              __MSP430_BASEADDRESS_RTC_C__
+#endif
 
 SFR_16BIT(RTCCTL0);                           /* Real Timer Clock Control 0/Key */
 SFR_8BIT(RTCCTL0_L);                          /* Real Timer Clock Control 0/Key */
@@ -5037,8 +5096,12 @@ SFR_8BIT(SYSRSTIV_H);                         /* Reset vector generator */
 * Timer0_A3
 ************************************************************/
 #define __MSP430_HAS_T0A3__                   /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define TIMER_A0_BASE           ((msp_addr_t)&ut_tmr_a0_reg[0])
+#else
 #define __MSP430_BASEADDRESS_T0A3__ 0x0340
-#define TIMER_A0_BASE          __MSP430_BASEADDRESS_T0A3__
+#define TIMER_A0_BASE           __MSP430_BASEADDRESS_T0A3__
+#endif
 
 SFR_16BIT(TA0CTL);                            /* Timer0_A3 Control */
 SFR_16BIT(TA0CCTL0);                          /* Timer0_A3 Capture/Compare Control 0 */
@@ -5101,7 +5164,12 @@ SFR_16BIT(TA0EX0);                            /* Timer0_A3 Expansion Register 0 
 #define OUTMOD0                (0x0020)       /* Output mode 0 */
 #define CCIE                   (0x0010)       /* Capture/compare interrupt enable */
 #define CCI                    (0x0008)       /* Capture input signal (read) */
+#if defined(_MSC_VER)
+#define TAXCCTLX_OUT           (0x0004)       /* PWM Output signal if output mode 0 */
+#else
 #define OUT                    (0x0004)       /* PWM Output signal if output mode 0 */
+#define TAXCCTLX_OUT           (0x0004)       /* PWM Output signal if output mode 0 */
+#endif
 #define COV                    (0x0002)       /* Capture/compare overflow flag */
 #define CCIFG                  (0x0001)       /* Capture/compare interrupt flag */
 
@@ -5155,8 +5223,12 @@ SFR_16BIT(TA0EX0);                            /* Timer0_A3 Expansion Register 0 
 * Timer1_A3
 ************************************************************/
 #define __MSP430_HAS_T1A3__                   /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define TIMER_A1_BASE           ((msp_addr_t)&ut_tmr_a1_reg[0])
+#else
 #define __MSP430_BASEADDRESS_T1A3__ 0x0380
-#define TIMER_A1_BASE          __MSP430_BASEADDRESS_T1A3__
+#define TIMER_A1_BASE           __MSP430_BASEADDRESS_T1A3__
+#endif
 
 SFR_16BIT(TA1CTL);                            /* Timer1_A3 Control */
 SFR_16BIT(TA1CCTL0);                          /* Timer1_A3 Capture/Compare Control 0 */
@@ -5190,8 +5262,12 @@ SFR_16BIT(TA1EX0);                            /* Timer1_A3 Expansion Register 0 
 * Timer2_A2
 ************************************************************/
 #define __MSP430_HAS_T2A2__                   /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define TIMER_A2_BASE           ((msp_addr_t)&ut_tmr_a2_reg[0])
+#else
 #define __MSP430_BASEADDRESS_T2A2__ 0x0400
-#define TIMER_A2_BASE          __MSP430_BASEADDRESS_T2A2__
+#define TIMER_A2_BASE           __MSP430_BASEADDRESS_T2A2__
+#endif
 
 SFR_16BIT(TA2CTL);                            /* Timer2_A2 Control */
 SFR_16BIT(TA2CCTL0);                          /* Timer2_A2 Capture/Compare Control 0 */
@@ -5221,8 +5297,12 @@ SFR_16BIT(TA2EX0);                            /* Timer2_A2 Expansion Register 0 
 * Timer3_A5
 ************************************************************/
 #define __MSP430_HAS_T3A5__                   /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define TIMER_A3_BASE           ((msp_addr_t)&ut_tmr_a3_reg[0])
+#else
 #define __MSP430_BASEADDRESS_T3A5__ 0x0440
-#define TIMER_A3_BASE          __MSP430_BASEADDRESS_T3A5__
+#define TIMER_A3_BASE           __MSP430_BASEADDRESS_T3A5__
+#endif
 
 SFR_16BIT(TA3CTL);                            /* Timer3_A5 Control */
 SFR_16BIT(TA3CCTL0);                          /* Timer3_A5 Capture/Compare Control 0 */
@@ -5260,8 +5340,12 @@ SFR_16BIT(TA3EX0);                            /* Timer3_A5 Expansion Register 0 
 * Timer0_B7
 ************************************************************/
 #define __MSP430_HAS_T0B7__                   /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define TIMER_B0_BASE           ((msp_addr_t)&ut_tmr_b0_reg[0])
+#else
 #define __MSP430_BASEADDRESS_T0B7__ 0x03C0
-#define TIMER_B0_BASE          __MSP430_BASEADDRESS_T0B7__
+#define TIMER_B0_BASE           __MSP430_BASEADDRESS_T0B7__
+#endif
 
 SFR_16BIT(TB0CTL);                            /* Timer0_B7 Control */
 SFR_16BIT(TB0CCTL0);                          /* Timer0_B7 Capture/Compare Control 0 */
@@ -5408,8 +5492,12 @@ SFR_16BIT(TB0IV);                             /* Timer0_B7 Interrupt Vector Word
 * USCI A0
 ************************************************************/
 #define __MSP430_HAS_EUSCI_A0__                /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define EUSCI_A0_BASE           ((msp_addr_t)&ut_eusci_a_reg[0][0])
+#else
 #define __MSP430_BASEADDRESS_EUSCI_A0__ 0x05C0
-#define EUSCI_A0_BASE          __MSP430_BASEADDRESS_EUSCI_A0__
+#define EUSCI_A0_BASE           __MSP430_BASEADDRESS_EUSCI_A0__
+#endif
 
 SFR_16BIT(UCA0CTLW0);                         /* USCI A0 Control Word Register 0 */
 SFR_8BIT(UCA0CTLW0_L);                        /* USCI A0 Control Word Register 0 */
@@ -5453,8 +5541,12 @@ SFR_16BIT(UCA0IV);                            /* USCI A0 Interrupt Vector Regist
 * USCI A1
 ************************************************************/
 #define __MSP430_HAS_EUSCI_A1__                /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define EUSCI_A1_BASE           ((msp_addr_t)&ut_eusci_a_reg[1][0])
+#else
 #define __MSP430_BASEADDRESS_EUSCI_A1__ 0x05E0
-#define EUSCI_A1_BASE          __MSP430_BASEADDRESS_EUSCI_A1__
+#define EUSCI_A1_BASE           __MSP430_BASEADDRESS_EUSCI_A1__
+#endif
 
 SFR_16BIT(UCA1CTLW0);                         /* USCI A1 Control Word Register 0 */
 SFR_8BIT(UCA1CTLW0_L);                        /* USCI A1 Control Word Register 0 */
@@ -5498,9 +5590,12 @@ SFR_16BIT(UCA1IV);                            /* USCI A1 Interrupt Vector Regist
 * USCI B0
 ************************************************************/
 #define __MSP430_HAS_EUSCI_B0__                /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define EUSCI_B0_BASE           ((msp_addr_t)&ut_eusci_b_reg[0][0])
+#else
 #define __MSP430_BASEADDRESS_EUSCI_B0__ 0x0640
 #define EUSCI_B0_BASE          __MSP430_BASEADDRESS_EUSCI_B0__
-
+#endif
 
 SFR_16BIT(UCB0CTLW0);                         /* USCI B0 Control Word Register 0 */
 SFR_8BIT(UCB0CTLW0_L);                        /* USCI B0 Control Word Register 0 */
@@ -5562,9 +5657,12 @@ SFR_16BIT(UCB0IV);                            /* USCI B0 Interrupt Vector Regist
 * USCI B1
 ************************************************************/
 #define __MSP430_HAS_EUSCI_B1__                /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define EUSCI_B1_BASE           ((msp_addr_t)&ut_eusci_b_reg[1][0])
+#else
 #define __MSP430_BASEADDRESS_EUSCI_B1__ 0x0680
 #define EUSCI_B1_BASE          __MSP430_BASEADDRESS_EUSCI_B1__
-
+#endif
 
 SFR_16BIT(UCB1CTLW0);                         /* USCI B1 Control Word Register 0 */
 SFR_8BIT(UCB1CTLW0_L);                        /* USCI B1 Control Word Register 0 */
@@ -6109,8 +6207,12 @@ SFR_16BIT(UCB1IV);                            /* USCI B1 Interrupt Vector Regist
 * WATCHDOG TIMER A
 ************************************************************/
 #define __MSP430_HAS_WDT_A__                  /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define WDT_A_BASE              ((msp_addr_t)&ut_wdt_a_reg[0])
+#else
 #define __MSP430_BASEADDRESS_WDT_A__ 0x0150
 #define WDT_A_BASE             __MSP430_BASEADDRESS_WDT_A__
+#endif
 
 SFR_16BIT(WDTCTL);                            /* Watchdog Timer Control */
 SFR_8BIT(WDTCTL_L);                           /* Watchdog Timer Control */
@@ -6217,7 +6319,11 @@ SFR_8BIT(WDTCTL_H);                           /* Watchdog Timer Control */
 * Interrupt Vectors (offset from 0xFF80 + 0x10 for Password)
 ************************************************************/
 
+#if defined(_MSC_VER) /* ES1906-02 */
+// pass
+#else
 #pragma diag_suppress 1107
+#endif
 #define VECTOR_NAME(name)             name##_ptr
 #define EMIT_PRAGMA(x)                _Pragma(#x)
 #define CREATE_VECTOR(name)           void * const VECTOR_NAME(name) = (void *)(long)&name

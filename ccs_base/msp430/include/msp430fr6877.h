@@ -3053,9 +3053,9 @@ SFR_8BIT(PM5CTL0_H);                          /* PMM Power Mode 5 Control Regist
 ************************************************************/
 #define __MSP430_HAS_PORT1_R__                /* Definition to show that Module is available */
 #if defined(_MSC_VER) /* ES1906-02 */
-#define __MSP430_BASEADDRESS_PORT1_R__      ((msp_addr_t)&ut_port12a_reg[0])
-#define __MSP430_BASEADDRESS_PORT2_R__      ((msp_addr_t)&ut_port12a_reg[0])
-#define __MSP430_BASEADDRESS_PORTA_R__      ((msp_addr_t)&ut_port12a_reg[0])
+#define __MSP430_BASEADDRESS_PORT1_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTA])
+#define __MSP430_BASEADDRESS_PORT2_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTA])
+#define __MSP430_BASEADDRESS_PORTA_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTA])
 #else
 #define __MSP430_BASEADDRESS_PORT1_R__      0x0200
 #define __MSP430_BASEADDRESS_PORT2_R__      0x0200
@@ -3158,9 +3158,9 @@ SFR_16BIT(P2IV);                              /* Port 2 Interrupt Vector Word */
 ************************************************************/
 #define __MSP430_HAS_PORT3_R__                /* Definition to show that Module is available */
 #if defined(_MSC_VER) /* ES1906-02 */
-#define __MSP430_BASEADDRESS_PORT3_R__      ((msp_addr_t)&ut_port34b_reg[0])
-#define __MSP430_BASEADDRESS_PORT4_R__      ((msp_addr_t)&ut_port34b_reg[0])
-#define __MSP430_BASEADDRESS_PORTB_R__      ((msp_addr_t)&ut_port34b_reg[0])
+#define __MSP430_BASEADDRESS_PORT3_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTB])
+#define __MSP430_BASEADDRESS_PORT4_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTB])
+#define __MSP430_BASEADDRESS_PORTB_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTB])
 #else
 #define __MSP430_BASEADDRESS_PORT3_R__      0x0220
 #define __MSP430_BASEADDRESS_PORT4_R__      0x0220
@@ -3263,9 +3263,9 @@ SFR_16BIT(P4IV);                              /* Port 4 Interrupt Vector Word */
 ************************************************************/
 #define __MSP430_HAS_PORT5_R__                /* Definition to show that Module is available */
 #if defined(_MSC_VER) /* ES1906-02 */
-#define __MSP430_BASEADDRESS_PORT5_R__      ((msp_addr_t)&ut_port56c_reg[0])
-#define __MSP430_BASEADDRESS_PORT6_R__      ((msp_addr_t)&ut_port56c_reg[0])
-#define __MSP430_BASEADDRESS_PORTC_R__      ((msp_addr_t)&ut_port56c_reg[0])
+#define __MSP430_BASEADDRESS_PORT5_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTC])
+#define __MSP430_BASEADDRESS_PORT6_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTC])
+#define __MSP430_BASEADDRESS_PORTC_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTC])
 #else
 #define __MSP430_BASEADDRESS_PORT5_R__      0x0240
 #define __MSP430_BASEADDRESS_PORT6_R__      0x0240
@@ -3329,9 +3329,9 @@ SFR_8BIT(PCSELC_H);                           /* Port C Complement Selection */
 ************************************************************/
 #define __MSP430_HAS_PORT7_R__                /* Definition to show that Module is available */
 #if defined(_MSC_VER) /* ES1906-02 */
-#define __MSP430_BASEADDRESS_PORT7_R__      ((msp_addr_t)&ut_port78d_reg[0])
-#define __MSP430_BASEADDRESS_PORT8_R__      ((msp_addr_t)&ut_port78d_reg[0])
-#define __MSP430_BASEADDRESS_PORTD_R__      ((msp_addr_t)&ut_port78d_reg[0])
+#define __MSP430_BASEADDRESS_PORT7_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTD])
+#define __MSP430_BASEADDRESS_PORT8_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTD])
+#define __MSP430_BASEADDRESS_PORTD_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTD])
 #else
 #define __MSP430_BASEADDRESS_PORT7_R__      0x0260
 #define __MSP430_BASEADDRESS_PORT8_R__      0x0260
@@ -3395,9 +3395,9 @@ SFR_8BIT(PDSELC_H);                           /* Port D Complement Selection */
 ************************************************************/
 #define __MSP430_HAS_PORT9_R__                /* Definition to show that Module is available */
 #if defined(_MSC_VER) /* ES1906-02 */
-#define __MSP430_BASEADDRESS_PORT9_R__      ((msp_addr_t)&ut_port910e_reg[0])
-#define __MSP430_BASEADDRESS_PORT10_R__     ((msp_addr_t)&ut_port910e_reg[0])
-#define __MSP430_BASEADDRESS_PORTE_R__      ((msp_addr_t)&ut_port910e_reg[0])
+#define __MSP430_BASEADDRESS_PORT9_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTE])
+#define __MSP430_BASEADDRESS_PORT10_R__     ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTE])
+#define __MSP430_BASEADDRESS_PORTE_R__      ((msp_addr_t)&ut_msp_port_reg[OFS_MSP_PORTE])
 #else
 #define __MSP430_BASEADDRESS_PORT9_R__      0x0280
 #define __MSP430_BASEADDRESS_PORT10_R__     0x0280
@@ -4406,8 +4406,12 @@ SFR_16BIT(TA3EX0);                            /* Timer3_A5 Expansion Register 0 
 * Timer0_B7
 ************************************************************/
 #define __MSP430_HAS_T0B7__                   /* Definition to show that Module is available */
+#if defined(_MSC_VER) /* ES1906-02 */
+#define TIMER_B0_BASE           ((msp_addr_t)&ut_tmr_b0_reg[0])
+#else
 #define __MSP430_BASEADDRESS_T0B7__ 0x03C0
-#define TIMER_B0_BASE          __MSP430_BASEADDRESS_T0B7__
+#define TIMER_B0_BASE           __MSP430_BASEADDRESS_T0B7__
+#endif
 
 SFR_16BIT(TB0CTL);                            /* Timer0_B7 Control */
 SFR_16BIT(TB0CCTL0);                          /* Timer0_B7 Capture/Compare Control 0 */
@@ -4604,7 +4608,7 @@ SFR_16BIT(UCA0IV);                            /* USCI A0 Interrupt Vector Regist
 ************************************************************/
 #define __MSP430_HAS_EUSCI_A1__                /* Definition to show that Module is available */
 #if defined(_MSC_VER) /* ES1906-02 */
-#define EUSCI_A1_BASE           ((msp_addr_t)&ut_eusci_a_reg[0][0])
+#define EUSCI_A1_BASE           ((msp_addr_t)&ut_eusci_a_reg[1][0])
 #else
 #define __MSP430_BASEADDRESS_EUSCI_A1__ 0x05E0
 #define EUSCI_A1_BASE           __MSP430_BASEADDRESS_EUSCI_A1__
