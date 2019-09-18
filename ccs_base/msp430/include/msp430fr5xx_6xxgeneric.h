@@ -6519,7 +6519,11 @@ typedef void (* __SFR_FARPTR)();
 * TLV Descriptors
 ************************************************************/
 #define __MSP430_HAS_TLV__                    /* Definition to show that Module is available */
-#define TLV_BASE               __MSP430_BASEADDRESS_TLV__
+#if defined(_MSC_VER) /* ES1906-02 */
+#define TLV_BASE                ((msp_addr_t)&ut_tlv_reg[0])
+#else
+#define TLV_BASE                __MSP430_BASEADDRESS_TLV__
+#endif
 
 #define TLV_CRC_LENGTH         (0x1A01)       /* CRC length of the TLV structure */
 #define TLV_CRC_VALUE          (0x1A02)       /* CRC value of the TLV structure */
