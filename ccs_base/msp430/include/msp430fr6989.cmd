@@ -1,5 +1,5 @@
 /* ============================================================================ */
-/* Copyright (c) 2019, Texas Instruments Incorporated                           */
+/* Copyright (c) 2020, Texas Instruments Incorporated                           */
 /*  All rights reserved.                                                        */
 /*                                                                              */
 /*  Redistribution and use in source and binary forms, with or without          */
@@ -36,7 +36,7 @@
 /*    Please do not change !                                                  */
 /*                                                                            */
 /******************************************************************************/
-/* Version: 1.207                                                             */
+/* Version: 1.212                                                             */
 /******************************************************************************/
 
 
