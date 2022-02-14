@@ -51,7 +51,7 @@
 #define __MSP430_HAS_MSP430XV2_CPU__                /* Definition to show that it has MSP430XV2 CPU */
 #define __MSP430FR5XX_6XX_FAMILY__
 
-#define __MSP430_HEADER_VERSION__ 1212
+#define __MSP430_HEADER_VERSION__ 1213
 
 #ifdef __cplusplus
 extern "C" {
